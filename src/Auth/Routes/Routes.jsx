@@ -6,8 +6,14 @@ import About from "../../Pages/About";
 import Contact from "../../Pages/Contact";
 import Home from "../../Pages/Home";
 import Login from "../../Pages/userInfo/Login.jsx";
+import Register from "../../Pages/userInfo/Register.jsx";
+import Dashboard from "../../Root/Dashboard.jsx";
+import CreateTask from "../../Pages/Dashboard/CreateTask.jsx";
+import ManageTask from "../../Pages/Dashboard/ManageTask.jsx";
+import PreviousTask from "../../Pages/Dashboard/PreviousTask.jsx";
 
 const router = createBrowserRouter([
+    // public routes
   {
     path: "/",
     element: <Root></Root>,
@@ -33,9 +39,35 @@ const router = createBrowserRouter([
         path: "login",
         element: <Login></Login>,
       },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
     ],
   },
-  // privat
+  // dashboard routes
+  {
+    path: "dashboard",
+    element : <Dashboard></Dashboard>,
+    children:[
+        {
+            path: 'createTask',
+            element : <CreateTask></CreateTask>
+        },
+        {
+            path: 'previousTask',
+            element : <PreviousTask></PreviousTask>
+        },
+        {
+            path: 'manageTask',
+            element : <ManageTask></ManageTask>
+        },
+    ]
+  },
+//   {
+//     path : 'createTask',
+//     element : <CreateTask></CreateTask>
+//   }
 ]);
 
 export default router;

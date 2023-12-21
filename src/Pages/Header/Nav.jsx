@@ -1,20 +1,25 @@
 import { NavLink } from "react-router-dom";
+import AuthInfo from "../../Components/CustomHook/AuthInfo";
+import { ToastContainer } from "react-toastify";
 
 const Nav = () => {
-    const navList = <>
-        <li>
-            <NavLink to='/'>Home</NavLink>
-        </li>
-        <li>
-            <NavLink to='blog'>Blog</NavLink>
-        </li>
-        <li>
-            <NavLink to='about'>About</NavLink>
-        </li>
-        <li>
-            <NavLink to='contact'>Contact</NavLink>
-        </li>
+  const { user } = AuthInfo();
+  const navList = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="blog">Blog</NavLink>
+      </li>
+      <li>
+        <NavLink to="about">About</NavLink>
+      </li>
+      <li>
+        <NavLink to="contact">Contact</NavLink>
+      </li>
     </>
+  );
   return (
     <div className="navbar bg-base-100 max-w-6xl mx-auto">
       <div className="navbar-start">
@@ -45,29 +50,36 @@ const Nav = () => {
         <a className="text-3xl font-bold">Daily Task</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-        {navList}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navList}</ul>
       </div>
       <div className="navbar-end">
-      <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle avatar"
+          >
+            <div className="w-10 rounded-full">
+              <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+            </div>
+          </div>
+          <ul
+            tabIndex={0}
+            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a className="justify-between">{user?.displayName}</a>
+            </li>
+            <li>
+              <a>Settings</a>
+            </li>
+            <li>
+              <a>Logout</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>
-      </div>
+      {/* <ToastContainer></ToastContainer> */}
     </div>
   );
 };

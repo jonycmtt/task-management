@@ -1,9 +1,10 @@
-import React from 'react';
+import AuthInfo from '../Components/CustomHook/AuthInfo';
 
 const Blog = () => {
+    const {name} = AuthInfo()
     return (
         <div>
-            blog
+            {name}
         </div>
     );
 };
