@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import AuthInfo from "../../Components/CustomHook/AuthInfo";
 
@@ -6,6 +6,8 @@ const Login = () => {
 
     const {userLogin} = AuthInfo()
     const navigate = useNavigate()
+    // const location = useLocation()
+    // const from = location.state?.from?.pathname || "/";
 
     const handleSubmit = (event) => {
         event.preventDefault();

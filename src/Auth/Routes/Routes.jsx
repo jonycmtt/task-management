@@ -11,9 +11,10 @@ import Dashboard from "../../Root/Dashboard.jsx";
 import CreateTask from "../../Pages/Dashboard/CreateTask.jsx";
 import ManageTask from "../../Pages/Dashboard/ManageTask.jsx";
 import PreviousTask from "../../Pages/Dashboard/PreviousTask.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 
 const router = createBrowserRouter([
-    // public routes
+  // public routes
   {
     path: "/",
     element: <Root></Root>,
@@ -48,26 +49,42 @@ const router = createBrowserRouter([
   // dashboard routes
   {
     path: "dashboard",
-    element : <Dashboard></Dashboard>,
-    children:[
-        {
-            path: 'createTask',
-            element : <CreateTask></CreateTask>
-        },
-        {
-            path: 'previousTask',
-            element : <PreviousTask></PreviousTask>
-        },
-        {
-            path: 'manageTask',
-            element : <ManageTask></ManageTask>
-        },
-    ]
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "createTask",
+        element: (
+          <PrivateRoute>
+            <CreateTask></CreateTask>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "previousTask",
+        element: (
+          <PrivateRoute>
+            <PreviousTask></PreviousTask>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manageTask",
+        element: (
+          <PrivateRoute>
+            <ManageTask></ManageTask>
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
-//   {
-//     path : 'createTask',
-//     element : <CreateTask></CreateTask>
-//   }
+  //   {
+  //     path : 'createTask',
+  //     element : <CreateTask></CreateTask>
+  //   }
 ]);
 
 export default router;

@@ -1,4 +1,14 @@
+import { ToastContainer, toast } from "react-toastify";
+import useAxiosData from "../../Components/CustomHook/useAxiosData";
+import { useNavigate } from "react-router-dom";
+import AuthInfo from "../../Components/CustomHook/AuthInfo";
+
 const CreateTask = () => {
+    
+    const axiosData = useAxiosData()
+    const {user} = AuthInfo()
+    const navigate = useNavigate()
+
     const  handleCreateTask = event => {
         event.preventDefault();
         const form = event.target;
@@ -8,9 +18,19 @@ const CreateTask = () => {
         const priority = form.priority.value;
 
         const createTaskInfo = {
-            title,description,dateline,priority
+            title,description,dateline,priority, userName : user?.displayName,email : user?.email,status: 'Todo'
         }
-        console.log(createTaskInfo);
+        // console.log(createTaskInfo);
+        axiosData.post('/task', createTaskInfo)
+        .then(res => {
+            console.log(res.data);
+            if(res.data.insertedId) {
+                toast.success('success create Task')
+                navigate('/dashboard/manageTask')
+              }
+        })
+
+        
     }
   return (
     <div className="border border-slate-600 max-w-4xl mx-auto p-6 rounded-md mb-10">
@@ -62,13 +82,14 @@ const CreateTask = () => {
             className="input input-bordered resize-none h-20"
             placeholder="Write Description About Task"
           >
-            {" "}
+            
           </textarea>
         </div>
-        <div className="text-center my-5">
+        <div className="text-center mt-5">
             <input className="btn btn-outline btn-primary text-white" type="submit" value='Added Task'/>
         </div>
       </form>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

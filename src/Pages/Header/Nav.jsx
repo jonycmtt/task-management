@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AuthInfo from "../../Components/CustomHook/AuthInfo";
 import { ToastContainer } from "react-toastify";
 
@@ -53,7 +53,7 @@ const Nav = () => {
         <ul className="menu menu-horizontal px-1">{navList}</ul>
       </div>
       <div className="navbar-end">
-        <div className="dropdown dropdown-end">
+        {user ? <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
             role="button"
@@ -78,8 +78,14 @@ const Nav = () => {
             </li>
           </ul>
         </div>
+        :
+        <Link to='/login'><button className="btn btn-primary btn-sm">Login</button></Link>
+      
+      }
+        
       </div>
       {/* <ToastContainer></ToastContainer> */}
+      
     </div>
   );
 };
