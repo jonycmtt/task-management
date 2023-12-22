@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import AuthInfo from "../../Components/CustomHook/AuthInfo";
+import GoogleLogin from "../../Components/SocailLogin/GoogleLogin";
 
 const Login = () => {
 
@@ -59,6 +60,7 @@ const Login = () => {
           <button className="btn btn-primary">Login</button>
         </div>
       </form>
+      <GoogleLogin></GoogleLogin>
       <div className="text-center pb-3">
         <p>Don&lsquo;t have an account yet ? Please <Link to='/register' className="text-blue-500">Register</Link> </p>
       </div>

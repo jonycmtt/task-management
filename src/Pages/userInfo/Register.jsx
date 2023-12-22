@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthInfo from "../../Components/CustomHook/AuthInfo";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GoogleLogin from "../../Components/SocailLogin/GoogleLogin";
 
 const Register = () => {
   const { userSignUp, updateUserProfile } = AuthInfo();
@@ -87,6 +88,7 @@ const Register = () => {
           <button className="btn btn-primary">Login</button>
         </div>
       </form>
+      <GoogleLogin></GoogleLogin>
       <div className="text-center pb-3">
         <p>
           Already have an account ? Please{" "}

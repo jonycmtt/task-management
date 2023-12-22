@@ -14,7 +14,7 @@ const Dashboard = () => {
     <div className="max-w-6xl mx-auto">
         <HomeDashboard></HomeDashboard>
         <Outlet></Outlet>
-        <ToastContainer></ToastContainer>
+        <ToastContainer autoClose={1000}></ToastContainer>
     </div>
   );
 };

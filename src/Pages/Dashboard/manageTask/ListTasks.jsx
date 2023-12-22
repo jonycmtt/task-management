@@ -9,6 +9,7 @@ import { MdDelete } from "react-icons/md";
 import { IoMdEye } from "react-icons/io";
 import { useDrag, useDrop } from "react-dnd";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const ListTasks = () => {
 //   const [tasksM, setTasks] = useState([]);
@@ -92,6 +93,17 @@ const Section = ({ status }) => {
           }
     })
   }
+
+//   delete
+
+const handleDelete = id => {
+    axiosData.delete(`/task/${id}`).then(res=>{
+        if(res.data){
+            toast.error("Deleted Task Successfully!")
+            refetch()
+        }
+    })
+}
   return (
     <div ref={drop} className={`${isOver ? 'bg-slate-600' : ''} rounded-sm overflow-hidden bg-slate-900 p-3 min-h-32`}>
       <div className="header bg-slate-700 p-1 rounded-xl">
@@ -100,14 +112,14 @@ const Section = ({ status }) => {
       </div>
       <ul>
           {tasksToMap?.map((item) => (
-            <Task item={item} key={item._id}></Task>
+            <Task item={item} handleDelete={handleDelete} key={item._id}></Task>
           ))}
         </ul>
     </div>
   );
 };
 
-const Task = ({ item }) => {
+const Task = ({ item,handleDelete }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
     item: {id : item._id},
@@ -122,10 +134,10 @@ const Task = ({ item }) => {
       <div className="flex justify-between items-center ">
         <span>{item.title}</span>
         <div className="flex items-center gap-3 ">
-          <button className=" bg-success capitalize p-1 rounded ">
+          <Link to={`/dashboard/viewTask/${item._id}`}><button className=" bg-success capitalize p-1 rounded ">
             <IoMdEye />
-          </button>
-          <button className="bg-error p-1 rounded capitalize">
+          </button></Link>
+          <button onClick={()=>handleDelete(item._id)} className="bg-error p-1 rounded capitalize">
             <MdDelete className="text-[16px]" />
           </button>
         </div>

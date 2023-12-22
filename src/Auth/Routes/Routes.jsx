@@ -12,6 +12,8 @@ import CreateTask from "../../Pages/Dashboard/CreateTask.jsx";
 import ManageTask from "../../Pages/Dashboard/ManageTask.jsx";
 import PreviousTask from "../../Pages/Dashboard/PreviousTask.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
+import ViewTask from "../../Pages/Dashboard/ViewTask.jsx";
+import UpdateTask from "../../Pages/Dashboard/UpdateTask.jsx";
 
 const router = createBrowserRouter([
   // public routes
@@ -79,6 +81,16 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path : 'viewTask/:id',
+        element : <ViewTask></ViewTask>,
+        loader : ({params}) => fetch(`http://localhost:5000/task/${params.id}`)
+      },
+      {
+        path : 'update/:id',
+        element : <UpdateTask></UpdateTask>,
+        loader : ({params}) => fetch(`http://localhost:5000/task/${params.id}`)
+      }
     ],
   },
   //   {

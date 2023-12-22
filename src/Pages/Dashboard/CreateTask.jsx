@@ -62,7 +62,7 @@ const CreateTask = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text">Deadline</span>
+              <span className="label-text">Priority</span>
             </label>
             <select required name="priority" className="select input-bordered select-ghost w-full">
               <option disabled selected>
