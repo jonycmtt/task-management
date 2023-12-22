@@ -34,9 +34,7 @@ const HomeDashboard = () => {
               <li>
                 <a className="justify-between">{user?.displayName}</a>
               </li>
-              <li>
-                <a>Settings</a>
-              </li>
+             
               <li>
                 <a onClick={handleLogOut}>Logout</a>
               </li>
@@ -45,10 +43,10 @@ const HomeDashboard = () => {
         </div>
       </div>
       <h2 className="text-4xl font-semibold text-center">
-        Daily Task Management
+        Welcome to &#34;{user?.displayName}&#34;
       </h2>
       <p className="text-center text-xl font-semibold">
-        &ldquo;Dashboard&ldquo;
+        &ldquo;Daily Task&ldquo;
       </p>
 
       <div className="flex gap-8 mt-16 mb-6 justify-center">

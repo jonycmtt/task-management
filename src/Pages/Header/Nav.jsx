@@ -71,7 +71,7 @@ const Nav = () => {
               <a className="justify-between">{user?.displayName}</a>
             </li>
             <li>
-              <a>Settings</a>
+              <Link to='/dashboard/manageTask'>Dashboard</Link>
             </li>
             <li>
               <a>Logout</a>
