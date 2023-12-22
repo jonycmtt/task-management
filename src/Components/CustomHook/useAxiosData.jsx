@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosData = axios.create({
-    baseURL : 'http://localhost:5000'
+    baseURL : 'https://task-management-server-snowy.vercel.app'
 })
 
 

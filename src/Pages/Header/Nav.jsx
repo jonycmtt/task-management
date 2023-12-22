@@ -47,7 +47,7 @@ const Nav = () => {
             {navList}
           </ul>
         </div>
-        <a className="text-3xl font-bold">Daily Task</a>
+        <a className=" md:text-3xl font-bold ">Daily Task</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navList}</ul>

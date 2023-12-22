@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Root = () => {
     return (
-        <div>
+        <div className="px-3">
             <Nav></Nav>
             <Outlet></Outlet>
             <ToastContainer autoClose={1000}></ToastContainer>

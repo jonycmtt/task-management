@@ -84,12 +84,12 @@ const router = createBrowserRouter([
       {
         path : 'viewTask/:id',
         element : <ViewTask></ViewTask>,
-        loader : ({params}) => fetch(`http://localhost:5000/task/${params.id}`)
+        loader : ({params}) => fetch(`https://task-management-server-snowy.vercel.app/task/${params.id}`)
       },
       {
         path : 'update/:id',
         element : <UpdateTask></UpdateTask>,
-        loader : ({params}) => fetch(`http://localhost:5000/task/${params.id}`)
+        loader : ({params}) => fetch(`https://task-management-server-snowy.vercel.app/task/${params.id}`)
       }
     ],
   },
