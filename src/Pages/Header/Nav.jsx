@@ -3,7 +3,15 @@ import AuthInfo from "../../Components/CustomHook/AuthInfo";
 import { ToastContainer } from "react-toastify";
 
 const Nav = () => {
-  const { user } = AuthInfo();
+  const { user,userLogout } = AuthInfo();
+  // const {} = AuthInfo()
+
+  const handleLogOut = () => {
+    userLogout()
+    .then(() => {
+      console.log('user logout');
+    }).catch(error => console.log(error.message))
+  }
   const navList = (
     <>
       <li>
@@ -44,13 +52,13 @@ const Nav = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {navList}
+            {/* {navList} */}
           </ul>
         </div>
         <a className=" md:text-3xl font-bold ">Daily Task</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navList}</ul>
+        {/* <ul className="menu menu-horizontal px-1">{navList}</ul> */}
       </div>
       <div className="navbar-end">
         {user ? <div className="dropdown dropdown-end">
@@ -74,7 +82,7 @@ const Nav = () => {
               <Link to='/dashboard/manageTask'>Dashboard</Link>
             </li>
             <li>
-              <a>Logout</a>
+            <a onClick={handleLogOut}>Logout</a>
             </li>
           </ul>
         </div>

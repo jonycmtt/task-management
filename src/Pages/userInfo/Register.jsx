@@ -24,7 +24,7 @@ const Register = () => {
           .then(() => {
             console.log("updated profile");
             toast.success("Success Register");
-            navigate("/dashboard", { replace: true });
+            navigate("/dashboard/manageTask", { replace: true });
           })
           .catch((error) => console.log(error.message));
       })
